@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 10:10:38 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/02 18:25:42 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/02 18:36:21 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,24 @@ void		radix_from_file(t_rdx **root, char *file)
 {
 	int		fd;
 	char	*line;
+	size_t	ct;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return ;
+	ct = 0;
 	while (gnl(fd, &line))
 	{
 		radix_insert(root, line);
 		if (line)
 			free(line);
+		ct++;
 	}
 	if (line)
 	{
+		ct++;
 		radix_insert(root, line);
 		free(line);
 	}
 	close(fd);
+	printf("Number of entries: %lu\n", ct);
 }
