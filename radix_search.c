@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:06:13 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/02 18:26:02 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 12:42:31 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void		rdx_search(t_search *s, char *target)
 		return ;
 	wrap_free(&(s->start), &(s->cur));
 	clear_str(&(s->prefix));
-	s->prefix = rdx_find_prefix(s->tree, target);
-	rdx_find_all(s, s->tree, NULL, s->prefix);
+	if ((s->prefix = rdx_find_prefix(s->tree, target)))
+		rdx_find_all(s, s->tree, NULL, s->prefix);
 }
