@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 17:56:20 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/02 18:26:15 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 12:56:08 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*join_free(char *start, char *rec)
 	if (!rec)
 		return (strdup(start));
 	if (!start)
-		return (rec);
+		return (strdup(rec));
 	ret = strjoin(start, rec);
 	free(rec);
 	return (ret);

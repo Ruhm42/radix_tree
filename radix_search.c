@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:06:13 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/03 12:42:31 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 13:03:25 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	rdx_find_all(t_search *s, t_rdx *node, char *concat, char *prefix)
 void		rdx_call_back(t_search *s, t_rdx *node, char *concat, char *prefix)
 {
 	if (!concat)
-		rdx_find_all(s, node, node->str, prefix);
+		rdx_find_all(s, node, strdup(node->str), prefix);
 	else
 		rdx_find_all(s, node, join_safe(concat, node->str), prefix);
 }

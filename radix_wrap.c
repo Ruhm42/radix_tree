@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:57:03 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/02 18:25:30 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 13:06:12 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,12 @@ void			wrap_free(t_wrap **start, t_wrap **cur)
 	if (!(*start))
 		return ;
 	if ((save = (*start)->prev) == (*start))
-		return (wrap_free_node(*start));
+	{
+		wrap_free_node(*start);
+		*start = NULL;
+		*cur = NULL;
+		return ;
+	}
 	prev = NULL;
 	while (*start != save)
 	{
@@ -64,6 +69,4 @@ void			wrap_free(t_wrap **start, t_wrap **cur)
 		prev = (*start)->prev;
 		*start = (*start)->next;
 	}
-	*start = NULL;
-	*cur = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 10:06:46 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/02 18:44:34 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 13:03:48 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ int 		main(int argc, char **argv)
 {
 	t_search	search;
 	clock_t		t;
+	int			i;
 
-	if (argc != 3)
-		return (0);
 	if (argc >= 2)
 	{
 		memset(&search, 0, sizeof(t_search));
@@ -52,14 +51,22 @@ int 		main(int argc, char **argv)
 	*/
 	if (argc >= 3)
 	{
-		scratch_time(&t);
-		rdx_search(&search, argv[2]);
-		printf("Searching through Radix Tree - ");
-		elapsed_time(t);
-		printf("Actual word is '%s'.\n", argv[2]);
-		printf("Its nearest prefix is '%s'\n", search.prefix);
-		printf("All suggestions of words are :\n");
-		print_wrap(search.start);
+		i = 2;
+		while (i < argc)
+		{
+			scratch_time(&t);
+			rdx_search(&search, argv[i]);
+			printf("Searching through Radix Tree - ");
+			elapsed_time(t);
+			printf("Actual word is '%s'.\n", argv[i]);
+			printf("Its nearest prefix is '%s'\n", search.prefix);
+			printf("All suggestions of words are :\n");
+			print_wrap(search.start);
+			i++;			
+		}
 	}
+	printf("END\n");
+	while (1)
+		;
 	return (0);
 }
