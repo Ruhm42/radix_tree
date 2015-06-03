@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 10:06:46 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/03 13:03:48 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 15:09:52 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int 		main(int argc, char **argv)
 			printf("Its nearest prefix is '%s'\n", search.prefix);
 			printf("All suggestions of words are :\n");
 			print_wrap(search.start);
-			i++;			
+			i++;
 		}
 	}
 	printf("END\n");
