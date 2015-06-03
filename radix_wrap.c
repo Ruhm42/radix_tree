@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:57:03 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/03 13:06:12 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 15:01:23 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,30 @@ void			wrap_build(t_wrap **start, t_wrap **cur, char *str)
 	(*cur)->next->prev = *cur;
 	(*cur)->next->next = *start;
 	*cur = (*cur)->next;
+	(*start)->prev = *cur;
 }
 
 static void		wrap_free_node(t_wrap *node)
 {
+	printf("freing %s\n", node->str);
 	free(node->str);
 	free(node);
 }
 
 void			wrap_free(t_wrap **start, t_wrap **cur)
 {
-	t_wrap	*save;
-	t_wrap	*prev;
-
 	if (!(*start))
 		return ;
-	if ((save = (*start)->prev) == (*start))
+	(*start)->prev->next = NULL;
+	(*start)->prev = NULL;
+	while (*start)
 	{
-		wrap_free_node(*start);
-		*start = NULL;
-		*cur = NULL;
-		return ;
-	}
-	prev = NULL;
-	while (*start != save)
-	{
-		if (prev)
-			wrap_free_node(prev);
-		prev = (*start)->prev;
+		if ((*start)->prev)
+			wrap_free_node((*start)->prev);
+		if (!(*start)->next)
+			wrap_free_node(*start);
 		*start = (*start)->next;
 	}
+	*start = NULL;
+	*cur = NULL;
 }
