@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:57:03 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/03 15:01:23 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 15:05:00 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void			wrap_build(t_wrap **start, t_wrap **cur, char *str)
 
 static void		wrap_free_node(t_wrap *node)
 {
-	printf("freing %s\n", node->str);
 	free(node->str);
 	free(node);
 }
