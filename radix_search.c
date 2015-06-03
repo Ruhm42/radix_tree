@@ -6,7 +6,7 @@
 /*   By: rda-cost <rda-cost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/02 14:06:13 by rda-cost          #+#    #+#             */
-/*   Updated: 2015/06/03 13:03:25 by rda-cost         ###   ########.fr       */
+/*   Updated: 2015/06/03 13:52:16 by rda-cost         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ char		*rdx_find_prefix(t_rdx *root, char *str)
 	while (root)
 	{
 		if (!min_strncmp(root->str, str, &sz))
-			return (join_free(root->str, rdx_find_prefix(root, str + sz)));
+		{
+			if ((str + sz)[0])
+				return (join_free(root->str, rdx_find_prefix(root, str + sz)));
+			else
+				return (strdup(root->str));
+		}
 		root = root->next;
 	}
 	return (NULL);
